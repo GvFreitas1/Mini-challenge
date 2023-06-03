@@ -1,16 +1,13 @@
 import pandas as pd
 import random
 
-df = pd.read_excel("Mini challenge - Semana 1.xlsx")  # Lê o arquivo .xlsx
+df = pd.read_excel("C:/Users/User/Downloads/Mini challenge - Semana 1.xlsx").sample(frac=1).reset_index(drop=True)  # Lê o arquivo .xlsx e embaralha suas linhas
 
 n = len(df["Nome"])
 
-indices = list(range(n))
-random.shuffle(indices)  # Embaralha os indices
-
 restritos = []
 bixos = []
-for i in indices:  # Separa os nomes restritos e os bixos em listas separadas
+for i in range(n):  # Separa os nomes restritos e os bixos em listas separadas
     if df["Restrição"][i] == 1:
         restritos.append(df["Nome"][i])
     else:
